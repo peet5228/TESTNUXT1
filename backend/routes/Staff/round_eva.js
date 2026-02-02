@@ -57,7 +57,7 @@ router.put('/:id_sys',verifyToken,requireRole('ฝ่ายบุคลากร
     try{
         const {id_sys} = req.params
         const  {day_open,day_out,round_sys,year_sys,status_sys} = req.body
-        const [rows] = await db.query(`update tb_system set day_open=?,day_out=?,round_sys=?,year_sys=?,status_sys=? where id_sys='${id_sys}' `)
+        const [rows] = await db.query(`update tb_system set day_open=?,day_out=?,round_sys=?,year_sys=?,status_sys=? where id_sys='${id_sys}' `,[day_open,day_out,round_sys,year_sys,status_sys])
         res.json({rows,message:'Update Success!'})
     }catch(err){
         console.error('Error Update',err)

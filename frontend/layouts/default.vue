@@ -10,6 +10,7 @@
       <v-btn icon="mdi-logout" variant="text" @click="logout" />&nbsp;&nbsp;
     </v-app-bar>
 
+    <ClientOnly>
     <v-navigation-drawer v-model="drawer" color="#404040" :temporary="isMobile" :permanent="!isMobile">
       <v-list>
         <v-list-item v-for="item in navitem" :key="item.title" :to="item.to">
@@ -19,6 +20,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+    </ClientOnly>
 
     <v-main>
       <v-container fluid class="py-6">
@@ -37,7 +39,8 @@ import {api} from '../API/base'
 const {mdAndDown} = useDisplay()
 const isMobile = computed(() => mdAndDown.value)
 const drawer = ref(true)
-const user = ref<any>({})
+const user = ref({})
+const token = process.client ? localStorage.getItem('token') : null
 
 const logout = async () =>{
     if(!confirm('ต้องการออกจากระบบใช่มั้ย'))return
@@ -48,7 +51,6 @@ const logout = async () =>{
 const roles = [
     //staff
     {title:'หน้าหลัก',to:'/Staff/',role:'ฝ่ายบุคลากร'},
-    {title:'จัดการผู้รับการประเมิน',to:'/Staff/ManageEva',role:'ฝ่ายบุคลากร'},
     {title:'จัดการผู้รับการประเมิน',to:'/Staff/ManageEva',role:'ฝ่ายบุคลากร'},
     {title:'จัดการกรรมการประเมิน',to:'/Staff/ManageCommit',role:'ฝ่ายบุคลากร'},
     {title:'จัดการหัวข้อการประเมิน',to:'/Staff/Topic',role:'ฝ่ายบุคลากร'},
@@ -67,21 +69,20 @@ const roles = [
 const navitem = computed(() => roles.filter((item) => item.role.includes(user.value.role)))
 
 const fetchUser = async () =>{
-    const token = localStorage.getItem('token')
     if(!token){
         return await navigateTo('/',{replace:true})
     }
     try{
-        const res = await axios.get(`${api}/auth/regis`)
+        const res = await axios.get(`${api}/profile`,{headers:{Authorization:`Bearer ${token}`}})
+        user.value = res.data
+        console.log(user.value)
     }catch(err){
         console.error('Error GET User',err)
-        if(!token){
-            localStorage.removeItem('token')
-            return await navigateTo('/',{replace:true})
-        }   
+        localStorage.removeItem('token')
+        await navigateTo('/',{replace:true})
     }
 }
-onMounted(fetchUser())
+onMounted(fetchUser)
 </script>
 
 <style scoped>

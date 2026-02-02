@@ -57,7 +57,7 @@ router.put('/:id_indicate',verifyToken,requireRole('ฝ่ายบุคลา�
     try{
         const {id_indicate} = req.params
         const {id_topic,name_indicate,detail_indicate,point_indicate,check_indicate} = req.body
-        const [rows] = await db.query(`update tb_indicate set id_topic=?,name_indicate=?,detail_indicate=?,point_indicate=?,check_indicate=? where id_indicate='${id_indicate}'`)
+        const [rows] = await db.query(`update tb_indicate set id_topic=?,name_indicate=?,detail_indicate=?,point_indicate=?,check_indicate=? where id_indicate='${id_indicate}'`,[id_topic,name_indicate,detail_indicate,point_indicate,check_indicate])
         res.json({rows,message:'Insert Success'})
     }catch(err){
         console.error('Error Insert',err)

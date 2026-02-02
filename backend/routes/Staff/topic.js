@@ -57,7 +57,7 @@ router.put('/:id_topic',verifyToken,requireRole('ฝ่ายบุคลาก�
     try{
         const {id_topic} = req.params
         const {name_topic} = req.body
-        const [rows] = await db.query(`update tb_topic set name_topic? where id_topic='${id_topic}'`,[name_topic])
+        const [rows] = await db.query(`update tb_topic set name_topic=? where id_topic='${id_topic}'`,[name_topic])
         res.json({rows,message:'Update Sucess'})
     }catch(err){
         console.error('Error Update',err)
