@@ -3,11 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
-<<<<<<< HEAD:database/sun sys.sql
+
 -- Generation Time: Feb 02, 2026 at 07:46 AM
-=======
+
 -- Generation Time: Feb 02, 2026 at 07:44 AM
->>>>>>> 5ffa0bcfe085dbecca6bb68e0dc3faba7a3e3bde:database/sun.sql
+
 -- Server version: 8.0.45
 -- PHP Version: 8.3.30
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `tb_commit`
 --
 
-<<<<<<< HEAD:database/sun sys.sql
+
 CREATE TABLE `tb_indicate` (
   `id_indicate` int NOT NULL,
   `id_topic` int NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE `tb_indicate` (
 
 INSERT INTO `tb_indicate` (`id_indicate`, `id_topic`, `name_indicate`, `detail_indicate`, `point_indicate`, `check_indicate`) VALUES
 (2, 2, 'การประเมินขั้นพื้นฐานขององค์กร', 'กรุณาแนบ\n', 5, 'y');
-=======
+
 CREATE TABLE `tb_commit` (
   `id_commit` int NOT NULL,
   `id_member` int NOT NULL,
@@ -116,7 +116,7 @@ ALTER TABLE `tb_commit`
   ADD PRIMARY KEY (`id_commit`);
 
 --
-<<<<<<< HEAD:database/sun sys.sql
+
 -- Indexes for table `tb_system`
 --
 ALTER TABLE `tb_system`
@@ -127,12 +127,12 @@ ALTER TABLE `tb_system`
 --
 ALTER TABLE `tb_topic`
   ADD PRIMARY KEY (`id_topic`);
-=======
+
 -- Indexes for table `tb_eva`
 --
 ALTER TABLE `tb_eva`
   ADD PRIMARY KEY (`id_eva`);
->>>>>>> 5ffa0bcfe085dbecca6bb68e0dc3faba7a3e3bde:database/sun.sql
+
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -141,7 +141,7 @@ ALTER TABLE `tb_eva`
 --
 -- AUTO_INCREMENT for table `tb_commit`
 --
-<<<<<<< HEAD:database/sun sys.sql
+
 ALTER TABLE `tb_indicate`
   MODIFY `id_indicate` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
@@ -156,7 +156,7 @@ ALTER TABLE `tb_system`
 --
 ALTER TABLE `tb_topic`
   MODIFY `id_topic` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-=======
+
 ALTER TABLE `tb_commit`
   MODIFY `id_commit` int NOT NULL AUTO_INCREMENT;
 
@@ -165,7 +165,7 @@ ALTER TABLE `tb_commit`
 --
 ALTER TABLE `tb_eva`
   MODIFY `id_eva` int NOT NULL AUTO_INCREMENT;
->>>>>>> 5ffa0bcfe085dbecca6bb68e0dc3faba7a3e3bde:database/sun.sql
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
