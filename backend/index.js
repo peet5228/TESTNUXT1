@@ -23,6 +23,9 @@ app.use('/api/profile',profile)
 
 // Endpoint STAFF API
 
+// Endpoint EVA API
+const edit_eva = require('./routes/Eva/edit_eva')
+app.use('/api/Eva/edit_eva',edit_eva)
 
 app.use((req,res) => res.status(404).json({message:'Invalid Routes llssssss'}))
 app.listen(3001,() => console.log("Server Running On Port 3001"))

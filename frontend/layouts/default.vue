@@ -39,7 +39,7 @@ import {api} from '../API/base'
 const {mdAndDown} = useDisplay()
 const isMobile = computed(() => mdAndDown.value)
 const drawer = ref(true)
-const user = ref({})
+const user = <any>ref({})
 const token = process.client ? localStorage.getItem('token') : null
 
 const logout = async () =>{
@@ -60,10 +60,14 @@ const roles = [
     {title:'จัดการแบบประเมิน',to:'/Staff/Eva',role:'ฝ่ายบุคลากร'},
 
     //commit
-    {title:'รายชื่อผู้รับการประเมิน',to:'/Staff/',role:'กรรมการประเมิน'},
+    {title:'รายชื่อผู้รับการประเมิน',to:'/Committee/',role:'กรรมการประเมิน'},
 
     //eva
-    {title:'หน้าหลัก',to:'/Staff/',role:'ผู้รับการประเมินผล'},
+    {title:'หน้าหลัก',to:'/Evaluatee/',role:'ผู้รับการประเมินผล'},
+    {title:'แก้ไขข้อมูลส่วนตัว',to:'/Evaluatee/Edit_eva',role:'ผู้รับการประเมินผล'},
+    {title:'แบบประเมินตนเอง',to:'/Evaluatee/Selfeva',role:'ผู้รับการประเมินผล'},
+    {title:'ตรวจสอบผลการประเมิน',to:'/Evaluatee/Check_score',role:'ผู้รับการประเมินผล'},
+    {title:'รายงานผล',to:'/Evaluatee/Report_eva',role:'ผู้รับการประเมินผล'},
 
 ]
 
