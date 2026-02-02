@@ -16,5 +16,5 @@ app.use('/uploads',express.static(path.join(__dirname,'uploads')))
 
 // Endpoint Public API
 
-app.use((req,res) => res.status(404).json({message:'Invalid Routes ll'}))
+app.use((req,res) => res.status(404).json({message:'Invalid Routes llssssss'}))
 app.listen(3001,() => console.log("Server Running On Port 3001"))
