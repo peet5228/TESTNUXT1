@@ -46,7 +46,7 @@ const Login = async () => {
         localStorage.setItem('token',res.data.token)
         const useRole = res.data.role
         if(useRole === 'ฝ่ายบุคลากร') useRouter().push('/Staff')
-        else if(useRole === 'กรรมการประเมินผล') useRouter().push('/Evaluatee')
+        else if(useRole === 'ผู้รับการประเมินผล') useRouter().push('/Evaluatee')
         else if(useRole === 'กรรมการประเมิน') useRouter().push('/Committee')
     }catch(err){
         console.error("Login Failed",err)

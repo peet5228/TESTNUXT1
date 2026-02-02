@@ -88,7 +88,7 @@ router.get('/:id_eva',verifyToken,requireRole('ฝ่ายบุคลากร
 router.post('/',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try{
         const {id_member,id_sys,day_eva} = req.body
-        const [rows] = await db.query(`insert into tb_eva (id_member,id_sys,day_eva,status_eva) values (?,?,?,?)`,[id_member,id_sys,.day_eva,1])
+        const [rows] = await db.query(`insert into tb_eva (id_member,id_sys,day_eva,status_eva) values (?,?,?,?)`,[id_member,id_sys,day_eva,1])
         res.json({rows,message:'Insert Success'})
     }catch(err){
         console.error('Error Insert',err)
@@ -101,7 +101,7 @@ router.put('/:id_eva',verifyToken,requireRole('ฝ่ายบุคลากร
     try{
         const {id_eva} = req.params
         const {id_member,id_sys,day_eva} = req.body
-        const [rows] = await db.query(`update tb_eva set id_member=?,id_sys=?,day_eva=?,status_eva=? where id_eva='${id_eva}'`,[id_member,id_sys,.day_eva,1])
+        const [rows] = await db.query(`update tb_eva set id_member=?,id_sys=?,day_eva=?,status_eva=? where id_eva='${id_eva}'`,[id_member,id_sys,day_eva,1])
         res.json({rows,message:'Update Success'})
     }catch(err){
         console.error('Error Update',err)

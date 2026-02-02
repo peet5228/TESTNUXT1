@@ -2,32 +2,9 @@
     <v-container fluid class="py-10">
                 <v-card>
                     <v-sheet class="pa-4 text-center" color="">
-                        <h1 class="text-h5 font-weight-bold">จัดการแบบประเมิน</h1>
+                        <h1 class="text-h5 font-weight-bold">รายงานแบบประเมินที่ไม่สำเร็จ</h1>
                     </v-sheet>
                     <v-card-text>
-                        <v-form @submit.prevent="saveMember">
-                            <v-row>
-                                <v-col cols="12" md="6">
-                                    <v-select label="เลือกผู้รับการประเมินผล" :items="m.map( m => ({title:`${m.first_name} ${m.last_name}`,value:m.id_member}))" v-model="form.id_member" :error-messages="error.day_eva" />
-                                </v-col>
-                                <v-col cols="12" md="6">
-                                    <v-text-field label="วันที่แบบประเมิน" type="date" v-model="form.day_eva" :error-messages="error.day_eva" />
-                                </v-col>
-                                <v-col cols="12" md="12">
-                                    <v-select label="รอบการประเมิน" v-model="form.id_sys" :items="r.map( p => ({title:`รอบการประเมินที่ ${p.round_sys} ปี ${p.year_sys}`,value:p.id_sys}))" :error-messages="error.id_sys" />
-                                </v-col>
-
-                                <v-row>
-                                    <v-col cols="12" md="6">
-                                        <v-btn color="blue" type="submit" block>{{ form.id_sys ? "อัปเดต" : 'บันทึก' }}</v-btn>
-                                    </v-col>
-                                    <v-col cols="12" md="6">
-                                        <v-btn color="error" type="reset" block>ยกเลิก</v-btn>
-                                    </v-col>
-                                </v-row>
-                            </v-row>
-                        </v-form>
-                        <br><br><BR></BR>
                         <v-table>
                             <thead>
                                 <tr>
@@ -36,8 +13,8 @@
                                     <th class="text-center border">วันทีออกแบบประเมิน</th>
                                     <th class="text-center border">รอบการประเมิน</th>
                                     <th class="text-center border">สถานะการประเมิน</th>
-                                    <th class="text-center border">จัดการ</th>
-                                    <th class="text-center border">เพิ่มกรรมการ</th>
+                                    <!-- <th class="text-center border">จัดการ</th> -->
+                                    <!-- <th class="text-center border">เพิ่มกรรมการ</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,21 +24,16 @@
                                     <td class="text-center border">{{ items.day_eva }}</td>
                                     <td class="text-center border">รอบการประเมินที่ {{ items.round_sys }} ปี {{ items.year_sys }}</td>
                                     <td class="text-center border">{{ items.status_eva === 1 ? 'ยังไม่ได้ประเมิน' : items.status_eva === 2 ? 'รอกรรมการประเมิน' : 'ประเมินเสร็จสิ้น' }}</td>
-                                    <td class="text-center border">
-                                        <v-btn color="warning" class="text-white" size="small" @click="edit(items)">แก้ไข</v-btn>&nbsp;
-                                        <v-btn color="error" class="text-white" size="small" @click="del(items.id_eva)">ลบ</v-btn>
-                                    </td>
-                                    <td class="text-center border">
-                                        <!-- <v-btn color="warning" class="text-white" size="small" @click="edit(items)">แก้ไข</v-btn>&nbsp; -->
-                                        <v-btn color="success" class="text-white" size="small" @click="go(items.id_eva)">เพิ่มกรรมการ</v-btn>
-                                    </td>
                                 </tr>
                                 <tr v-if="result.length === 0">
                                     <td class="text-center border" colspan="10">ไม่พบข้อมูล</td>
                                 </tr>
                             </tbody>
                         </v-table>
+                         <br><br>
+                        <center><v-btn color="warning" class="text-white noP" prepend-icon="mdi-printer" @click="p()">พิมพ์</v-btn></center>
                     </v-card-text>
+                    <!-- </v-card-text> -->
                 </v-card>
     </v-container>
 </template>
@@ -108,7 +80,7 @@ function validateForm(){
 
 const fetch = async () => {
     try{
-        const res = await axios.get(`${staff}/eva`,{headers:{Authorization:`Bearer ${token}`}})
+        const res = await axios.get(`${staff}/eva/n`,{headers:{Authorization:`Bearer ${token}`}})
         result.value = res.data
         const round = await axios.get(`${staff}/eva/round`,{headers:{Authorization:`Bearer ${token}`}})
         r.value = round.data
@@ -148,9 +120,18 @@ const go = (id_eva:number) => {
     navigateTo({path: `Eva_commit-${id_eva}`})
 }
 
+
+const p = () => {
+    window.print()
+}
+
 onMounted(fetch)
 </script>
 
 <style scoped>
-
+@media print{
+    .v-btn,.noP{
+        display: none !important;
+    }
+}
 </style>
