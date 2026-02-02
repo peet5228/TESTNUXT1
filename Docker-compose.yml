@@ -29,7 +29,7 @@ services:
       DB_HOST: mysql
       DB_USER: root
       DB_PASSWORD: 1234
-      DB_DATABASE: mon
+      DB_DATABASE: sun
       JWT_SECRET: "ntc&&1234"
       CHOKIDAR_USEPOLLING: true
     networks: ["app-network"]
@@ -53,7 +53,7 @@ services:
     ports: ["3307:3306"]
     restart: always
     volumes:
-      - ./database:/docker-entrypoint-initdb.database
+      - ./database:/docker-entrypoint-initdb.d
       - mysql_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 1234
