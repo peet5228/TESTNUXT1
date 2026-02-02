@@ -25,6 +25,7 @@ app.use('/api/profile',profile)
 const member = require('./routes/Staff/member')
 app.use('/api/Staff/member',member)
 
+<<<<<<< HEAD
 const topic = require('./routes/Staff/topic')
 app.use('/api/Staff/topic',topic)
 
@@ -33,6 +34,11 @@ app.use('/api/Staff/indicate',indicate)
 
 const round_eva = require('./routes/Staff/round_eva')
 app.use('/api/Staff/round_eva',round_eva)
+=======
+// Endpoint EVA API
+const edit_eva = require('./routes/Eva/edit_eva')
+app.use('/api/Eva/edit_eva',edit_eva)
+>>>>>>> 5ffa0bcfe085dbecca6bb68e0dc3faba7a3e3bde
 
 app.use((req,res) => res.status(404).json({message:'Invalid Routes llssssss'}))
 app.listen(3001,() => console.log("Server Running On Port 3001"))

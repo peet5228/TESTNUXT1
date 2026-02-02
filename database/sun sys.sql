@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
+<<<<<<< HEAD:database/sun sys.sql
 -- Generation Time: Feb 02, 2026 at 07:46 AM
+=======
+-- Generation Time: Feb 02, 2026 at 07:44 AM
+>>>>>>> 5ffa0bcfe085dbecca6bb68e0dc3faba7a3e3bde:database/sun.sql
 -- Server version: 8.0.45
 -- PHP Version: 8.3.30
 
@@ -24,9 +28,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_indicate`
+-- Table structure for table `tb_commit`
 --
 
+<<<<<<< HEAD:database/sun sys.sql
 CREATE TABLE `tb_indicate` (
   `id_indicate` int NOT NULL,
   `id_topic` int NOT NULL,
@@ -42,20 +47,32 @@ CREATE TABLE `tb_indicate` (
 
 INSERT INTO `tb_indicate` (`id_indicate`, `id_topic`, `name_indicate`, `detail_indicate`, `point_indicate`, `check_indicate`) VALUES
 (2, 2, 'การประเมินขั้นพื้นฐานขององค์กร', 'กรุณาแนบ\n', 5, 'y');
+=======
+CREATE TABLE `tb_commit` (
+  `id_commit` int NOT NULL,
+  `id_member` int NOT NULL,
+  `id_eva` int NOT NULL,
+  `status_commit` varchar(1) NOT NULL,
+  `level_commit` varchar(100) NOT NULL,
+  `detail_commit` text,
+  `signature` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+>>>>>>> 5ffa0bcfe085dbecca6bb68e0dc3faba7a3e3bde:database/sun.sql
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_system`
+-- Table structure for table `tb_eva`
 --
 
-CREATE TABLE `tb_system` (
+CREATE TABLE `tb_eva` (
+  `id_eva` int NOT NULL,
+  `id_member` int NOT NULL,
   `id_sys` int NOT NULL,
-  `day_open` date NOT NULL,
-  `day_out` date NOT NULL,
-  `round_sys` varchar(1) NOT NULL,
-  `year_sys` varchar(4) NOT NULL,
-  `status_sys` varchar(1) NOT NULL
+  `status_eva` int NOT NULL,
+  `total_eva` double(10,2) DEFAULT NULL,
+  `total_commit` double(10,2) DEFAULT NULL,
+  `day_eva` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -68,12 +85,17 @@ INSERT INTO `tb_system` (`id_sys`, `day_open`, `day_out`, `round_sys`, `year_sys
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_topic`
+-- Table structure for table `tb_evadetail`
 --
 
-CREATE TABLE `tb_topic` (
-  `id_topic` int NOT NULL,
-  `name_topic` varchar(100) NOT NULL
+CREATE TABLE `tb_evadetail` (
+  `id_eva` int NOT NULL,
+  `id_indicate` int NOT NULL,
+  `status_eva` int NOT NULL,
+  `score_member` int DEFAULT NULL,
+  `score_commit` int DEFAULT NULL,
+  `detail_eva` text,
+  `file_eva` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -88,12 +110,13 @@ INSERT INTO `tb_topic` (`id_topic`, `name_topic`) VALUES
 --
 
 --
--- Indexes for table `tb_indicate`
+-- Indexes for table `tb_commit`
 --
-ALTER TABLE `tb_indicate`
-  ADD PRIMARY KEY (`id_indicate`);
+ALTER TABLE `tb_commit`
+  ADD PRIMARY KEY (`id_commit`);
 
 --
+<<<<<<< HEAD:database/sun sys.sql
 -- Indexes for table `tb_system`
 --
 ALTER TABLE `tb_system`
@@ -104,14 +127,21 @@ ALTER TABLE `tb_system`
 --
 ALTER TABLE `tb_topic`
   ADD PRIMARY KEY (`id_topic`);
+=======
+-- Indexes for table `tb_eva`
+--
+ALTER TABLE `tb_eva`
+  ADD PRIMARY KEY (`id_eva`);
+>>>>>>> 5ffa0bcfe085dbecca6bb68e0dc3faba7a3e3bde:database/sun.sql
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `tb_indicate`
+-- AUTO_INCREMENT for table `tb_commit`
 --
+<<<<<<< HEAD:database/sun sys.sql
 ALTER TABLE `tb_indicate`
   MODIFY `id_indicate` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
@@ -126,6 +156,16 @@ ALTER TABLE `tb_system`
 --
 ALTER TABLE `tb_topic`
   MODIFY `id_topic` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+=======
+ALTER TABLE `tb_commit`
+  MODIFY `id_commit` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_eva`
+--
+ALTER TABLE `tb_eva`
+  MODIFY `id_eva` int NOT NULL AUTO_INCREMENT;
+>>>>>>> 5ffa0bcfe085dbecca6bb68e0dc3faba7a3e3bde:database/sun.sql
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
