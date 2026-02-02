@@ -23,10 +23,10 @@
                                     <v-text-field label="ชื่อผู้ใช้" v-model="form.username" :error-messages="error.username"></v-text-field>
                                 </v-col>
                                 <v-col cols="12" md="6">
-                                    <v-text-field label="รหัสผ่าน" v-model="form.password" :error-messages="error.password"></v-text-field>
+                                    <v-text-field label="รหัสผ่าน" type="password" v-model="form.password" :error-messages="error.password"></v-text-field>
                                 </v-col>
                                 <v-col cols="12" md="6">
-                                    <v-text-field label="ยืนยันรหัสผ่าน" v-model="confirmPassword" :error-messages="error.confirmPassword"></v-text-field>
+                                    <v-text-field label="ยืนยันรหัสผ่าน" type="password" v-model="confirmPassword" :error-messages="error.confirmPassword"></v-text-field>
                                 </v-col>
                                 <v-col cols="12">
                                     <v-select label="เลือกประเภทสมาชิก" :items="['ฝ่ายบุคลากร','กรรมการประเมิน','ผู้รับการประเมินผล']" v-model="form.role" :error-messages="error.role"></v-select>
