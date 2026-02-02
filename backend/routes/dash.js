@@ -64,4 +64,26 @@ router.get('/eva',verifyToken,requireRole('ผู้รับการประ�
     }
 })
 
+// API สำหรับ get ข้อมูล
+router.get('/doc',verifyToken,requireRole('ผู้รับการประเมินผล'),async (req,res) => {
+    try{
+        const [rows] = await db.query(`select * from tb_doc order by id_doc desc`)
+        res.json(rows)
+    }catch(err){
+        console.error('Error Get',err)
+        res.status(500).json({message:'Error Get'})
+    }
+})
+
+// API สำหรับ get ข้อมูล
+router.get('/commit/doc',verifyToken,requireRole('กรรมการประเมิน'),async (req,res) => {
+    try{
+        const [rows] = await db.query(`select * from tb_doc order by id_doc desc`)
+        res.json(rows)
+    }catch(err){
+        console.error('Error Get',err)
+        res.status(500).json({message:'Error Get'})
+    }
+})
+
 module.exports = router

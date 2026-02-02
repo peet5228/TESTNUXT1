@@ -33,7 +33,7 @@ const error = ref('')
 const username = ref('')
 const password = ref('')
 const role = ref('')
-const g = ['ฝ่ายบุคลากร','กรรมการประเมินผล','ผู้รับการประเมินผล']
+const g = ['ฝ่ายบุคลากร','กรรมการประเมิน','ผู้รับการประเมินผล']
 
 const Login = async () => {
     try{

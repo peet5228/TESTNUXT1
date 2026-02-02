@@ -66,6 +66,7 @@ const roles = [
 
     //commit
     {title:'รายชื่อผู้รับการประเมิน',to:'/Committee/',role:'กรรมการประเมิน'},
+    {title:'คู่มือการประเมิน',to:'/Committee/Document',role:'กรรมการประเมิน'},
 
     //eva
     {title:'หน้าหลัก',to:'/Evaluatee/',role:'ผู้รับการประเมินผล'},
@@ -73,6 +74,7 @@ const roles = [
     {title:'แบบประเมินตนเอง',to:'/Evaluatee/Selfeva',role:'ผู้รับการประเมินผล'},
     {title:'ตรวจสอบผลการประเมิน',to:'/Evaluatee/Check_score',role:'ผู้รับการประเมินผล'},
     {title:'รายงานผล',to:'/Evaluatee/Report_eva',role:'ผู้รับการประเมินผล'},
+    {title:'คู่มือการประเมิน',to:'/Evaluatee/Document',role:'ผู้รับการประเมินผล'},
 
 ]
 
