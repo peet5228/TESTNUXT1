@@ -33,6 +33,7 @@
 <script setup lang="ts" >
 import axios from 'axios';
 import { useDisplay } from 'vuetify';
+import {api} from '../API/base'
 const {mdAndDown} = useDisplay()
 const isMobile = computed(() => mdAndDown.value)
 const drawer = ref(true)
@@ -64,9 +65,13 @@ const fetchUser = async () =>{
         return await navigateTo('/',{replace:true})
     }
     try{
-        const res = await axios.get(``)
+        const res = await axios.get(`${api}/auth/regis`)
     }catch(err){
         console.error('Error GET User',err)
+        if(!token){
+            localStorage.removeItem('token')
+            return await navigateTo('/',{replace:true})
+        }   
     }
 }
 onMounted(fetchUser())
