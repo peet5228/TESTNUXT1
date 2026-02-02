@@ -56,7 +56,7 @@ services:
       - ./database:/docker-entrypoint-initdb.database
       - mysql_data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: sun
     networks: ["app-network"]
 

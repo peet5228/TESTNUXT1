@@ -1,4 +1,4 @@
-import _default from "C:/mon/frontend/layouts/default.vue";
+import _default from "/app/layouts/default.vue";
 import type { ComputedRef, MaybeRef } from 'vue'
 declare module 'nuxt/app' {
   interface NuxtLayouts {
