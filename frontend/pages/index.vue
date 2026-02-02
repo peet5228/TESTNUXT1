@@ -33,7 +33,7 @@ const error = ref('')
 const username = ref('')
 const password = ref('')
 const role = ref('')
-const g = ['ฝ่ายบุคลกร','กรรมการประเมิน','ผู้รับการประเมินผล']
+const g = ['ฝ่ายบุคลากร','กรรมการประเมิน','ผู้รับการประเมินผล']
 
 const Login = async () => {
     try{
@@ -45,9 +45,9 @@ const Login = async () => {
         console.log("API Response : ",res.data)
         localStorage.setItem('token',res.data.token)
         const useRole = res.data.role
-        if(useRole === 'ฝ่ายบุคลากร') navigateTo('/Staff')
-        else if(useRole === 'ผู้รับการประเมิน') navigateTo('/Evaluatee')
-        else if(useRole === 'กรรมการประเมิน') navigateTo('/Committee')
+        if(useRole === 'ฝ่ายบุคลากร') useRouter().push('/Staff')
+        else if(useRole === 'ผู้รับการประเมิน') useRouter().push('/Evaluatee')
+        else if(useRole === 'กรรมการประเมิน') useRouter().push('/Committee')
     }catch(err){
         console.error("Login Failed",err)
         error.value = error.response?.data?.message || 'เข้าสู่ระบบไม่สำเร็จ'

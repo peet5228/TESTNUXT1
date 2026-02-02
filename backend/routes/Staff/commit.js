@@ -30,14 +30,14 @@ router.get('/header/:id_eva',verifyToken,requireRole('ผ่ายบุคล�
 })
 
 // API สำหรับ get ข้อมูล
-// router.get('/',verifyToken,requireRole('ผ่ายบุคลากร'),async (req,res) => {
-//     try{
-//         const [rows] = await db.query(``)
-//         res.json(rows)
-//     }catch(err){
-//         console.error('Error Get',err)
-//         res.status(500).json({message:'Error Get'})
-//     }
-// })
+router.get('/',verifyToken,requireRole('ผ่ายบุคลากร'),async (req,res) => {
+    try{
+        const [rows] = await db.query(``)
+        res.json(rows)
+    }catch(err){
+        console.error('Error Get',err)
+        res.status(500).json({message:'Error Get'})
+    }
+})
 
 module.exports = router
