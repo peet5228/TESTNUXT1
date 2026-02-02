@@ -68,10 +68,10 @@ const fetchUser = async () =>{
         const res = await axios.get(`${api}/auth/regis`)
     }catch(err){
         console.error('Error GET User',err)
-        if(!token){
-            localStorage.removeItem('token')
-            return await navigateTo('/',{replace:true})
-        }   
+        // if(!token){
+        //     localStorage.removeItem('token')
+        //     return await navigateTo('/',{replace:true})
+        // }   
     }
 }
 onMounted(fetchUser())
