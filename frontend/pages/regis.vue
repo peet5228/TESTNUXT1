@@ -75,7 +75,7 @@ function validateForm(){
     else if(f.username.trim().length < 4)error.value.username='ต้องมีอย่างน้อย 4 ตัวอักษร'
     if(!f.password.trim())error.value.password='กรุณากรอกรหัสผ่าน'
     else if(f.password.trim().length < 6)error.value.password='ต้องมีอย่างน้อย 6 ตัวอักษร'
-    if(confirmPassword.value.trim())error.value.confirmPassword='กรุณายืนยันรหัสผ่าน'
+    if(!confirmPassword.value.trim())error.value.confirmPassword='กรุณายืนยันรหัสผ่าน'
     else if(confirmPassword.value.trim() != f.password.trim())error.value.confirmPassword='รหัสผ่านไม่ตรงกัน'
     if(!f.role.trim())error.value.role='กรุณาเลือกประเภทสมาชิก'
     return Object.keys(error.value).length === 0
