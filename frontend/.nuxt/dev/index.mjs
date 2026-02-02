@@ -2137,6 +2137,9 @@ const plugins = [
 _1xyvuM2CQDhMlDxE8qY1t3Wi66ocgNUNDNce4pREOrU
 ];
 
+<<<<<<< HEAD
+const assets = {};
+=======
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
@@ -2153,6 +2156,7 @@ const assets = {
     "path": "index.mjs.map"
   }
 };
+>>>>>>> 56f07545ff93ab73cbffb0194ea195687f4591d8
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));

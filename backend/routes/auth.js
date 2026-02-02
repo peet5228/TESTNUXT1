@@ -9,7 +9,7 @@ const bc = require('bcrypt')
 router.post('/login',async (req,res) => {
     try{
         const {username,password,role} = req.body
-        const [rows] = await db.query(`select * from tb_member where username=? and role=?`,[username,role])
+        const [rows] = await db.query(`select * from tb_member where username='${username}' and role='${role}'`)
         const m = rows[0]
         if(!password || !(await bc.compare(password,m.password))) return res.status(403).json({message:'Invalid Password'})
         const token = jwt.sign(
