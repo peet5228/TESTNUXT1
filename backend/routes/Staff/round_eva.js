@@ -6,7 +6,7 @@ const {verifyToken,requireRole} = require('../../middleware/authMiddleware')
 
 // ====== demo =======
 // API สำหรับ get ข้อมูล
-// router.get('/',verifyToken,requireRole('ผ่ายบุคลากร'),async (req,res) => {
+// router.get('/',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
 //     try{
 //         const [rows] = await db.query(``)
 //         res.json(rows)
@@ -18,7 +18,7 @@ const {verifyToken,requireRole} = require('../../middleware/authMiddleware')
 // ====== demo =======
 
 // API สำหรับ get ข้อมูล
-router.get('/',verifyToken,requireRole('ผ่ายบุคลากร'),async (req,res) => {
+router.get('/',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try{
         const [rows] = await db.query(`select * from tb_system order by id_sys desc`)
         res.json(rows)
@@ -29,7 +29,7 @@ router.get('/',verifyToken,requireRole('ผ่ายบุคลากร'),asyn
 })
 
 // API สำหรับ get ข้อมูล where params
-router.get('/:id_sys',verifyToken,requireRole('ผ่ายบุคลากร'),async (req,res) => {
+router.get('/:id_sys',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try{
         const {id_sys} = req.params
         const [rows] = await db.query(`select * from tb_system where id_sys='${id_sys}' order by id_sys desc`)
@@ -41,7 +41,7 @@ router.get('/:id_sys',verifyToken,requireRole('ผ่ายบุคลากร
 })
 
 // API สำหรับ Insert ข้อมูล
-router.post('/',verifyToken,requireRole('ผ่ายบุคลากร'),async (req,res) => {
+router.post('/',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try{
         const  {day_open,day_out,round_sys,year_sys,status_sys} = req.body
         const [rows] = await db.query(`insert into tb_system (day_open,day_out,round_sys,year_sys,status_sys) values (?,?,?,?,?)`,[day_open,day_out,round_sys,year_sys,status_sys])
@@ -53,7 +53,7 @@ router.post('/',verifyToken,requireRole('ผ่ายบุคลากร'),asy
 })
 
 // API สำหรับ Update ข้อมูล
-router.put('/:id_sys',verifyToken,requireRole('ผ่ายบุคลากร'),async (req,res) => {
+router.put('/:id_sys',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try{
         const {id_sys} = req.params
         const  {day_open,day_out,round_sys,year_sys,status_sys} = req.body
@@ -66,7 +66,7 @@ router.put('/:id_sys',verifyToken,requireRole('ผ่ายบุคลากร
 })
 
 // API สำหรับ Delete ข้อมูล
-router.delete('/:id_sys',verifyToken,requireRole('ผ่ายบุคลากร'),async (req,res) => {
+router.delete('/:id_sys',verifyToken,requireRole('ฝ่ายบุคลากร'),async (req,res) => {
     try{
         const {id_sys} = req.params
         // const  {day_open,day_out,round_sys,year_sys,status_sys} = req.body
